@@ -1,10 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => 
-    function makeGameBorad() {
-        var grid = document.querySelector(".grid")
+document.addEventListener('DOMContentLoaded', () => {
+    function makeGameBoard() {
+        var grid = document.querySelector(".grid");
 
         for (var i = 0; i < 200; i ++) {
             let square = document.createElement("div");
-            gameBoard.appendChild(square);
+            grid.appendChild(square);
         }
     }
+
+    makeGameBoard();
 })
