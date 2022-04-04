@@ -57,6 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(square);
             squares.push(square);
         }
+        for (var i = 0; i < 10; i ++) {
+            let square = document.createElement("div");
+            grid.appendChild(square);
+            squares.push(square);
+        }
         return squares;
     }
     
@@ -81,5 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPosition += width
         draw();
     }
-    //draw();
 })
