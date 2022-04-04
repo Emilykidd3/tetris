@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         for (var i = 0; i < 10; i ++) {
             let square = document.createElement("div");
+            square.classList.add("taken")
             grid.appendChild(square);
             squares.push(square);
         }
@@ -79,11 +80,23 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    timerId = setInterval(moveDown, 1000);
+    timerId = setInterval(moveDown, 500);
 
     function moveDown(){
         undraw();
         currentPosition += width
         draw();
+        freeze()
+    }
+
+    function freeze() {
+        if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+            current.forEach(index => squares[currentPosition + index].classList.add("taken"))
+            // start a new tet falling
+            random = Math.floor(Math.random() * theTetrominoes.length)
+            current = theTetrominoes[random][currentRotation]
+            currentPosition = 4
+            draw()
+        }
     }
 })
