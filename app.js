@@ -43,7 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const theTetrominoes = [ltetromino, zTetromino, tTetromino, oTetromino, iTetromino];
 
     let currentPosition = 4
-    let current = theTetrominoes[0][0];
+    let currentRotation = 0
+
+    let random = Math.floor(Math.random()*theTetrominoes.length)
+    let current = theTetrominoes[random][currentRotation];
+    console.log(current);
+
 
     function makeGameBoard() {
         var squares = []
@@ -63,5 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    draw();
+    function undraw() {
+        current.forEach(index => {
+            squares[currentPosition + index].classList.remove('tetromino')
+        })
+    }
+
+    //draw();
 })
