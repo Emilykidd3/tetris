@@ -88,9 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (e.keyCode === 38){
             // rotate()
         } else if (e.keyCode === 39){
-            // moveRight()
+            moveRight()
         } else if (e.keyCode === 40){
-            // moveDown()
+            moveDown()
         }
     }
     document.addEventListener('keyup', control)
@@ -124,5 +124,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw()
+    }
+
+    function moveRight() {
+        undraw()
+        const isAtRightEdge = current.some(index => (currentPosition +
+             index) % width === width - 1)
+
+             if(!isAtRightEdge) currentPosition+=1
+
+             if(current.some(index => squares[currentPosition+index].classList.contains('taken'))){
+                 currentPosition-=1
+             }
+
+             draw()
     }
 })
