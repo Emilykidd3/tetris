@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     var grid = document.querySelector(".grid");
+    var miniGrid = document.querySelector(".mini-grid");
     const ScroeDisplay = document.querySelector('#score');
     const StartBtn = document.querySelector('#start-button')
     const width = 10
@@ -65,8 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return squares;
     }
+
+    function makeMiniGrid(){
+        var squares = []
+        for (var i = 0; i < 16; i ++) {
+            let square = document.createElement("div");
+            miniGrid.appendChild(square);
+            squares.push(square);
+        }
+        return squares;
+    }
     
     var squares = makeGameBoard();
+    var miniSquare = makeMiniGrid();
     
     function draw() {
         current.forEach(index => {
