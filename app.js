@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ScroeDisplay = document.querySelector('#score');
     const StartBtn = document.querySelector('#start-button')
     const width = 10
+    let nextRandom = 0;
 
     // the shapes
     const ltetromino = [
@@ -117,11 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function freeze() {
         if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
             current.forEach(index => squares[currentPosition + index].classList.add("taken"))
+            random = nextRandom
             // start a new tet falling
-            random = Math.floor(Math.random() * theTetrominoes.length)
+            nextRandom = Math.floor(Math.random() * theTetrominoes.length)
             current = theTetrominoes[random][currentRotation]
             currentPosition = 4
             draw()
+            displayShape()
         }
     }
 
@@ -176,5 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
     // display shape in mini grid
-    function displayShape() {}
+    function displayShape() {
+        displaySquares.forEach(square => {
+            square.classList.remove('tetromino')
+        })
+        upNextTetrominoes[nextRandom].forEach(index=> {
+            displaySquares[displayIndex + index].classList.add('tetromino')
+        })
+    }
 })
