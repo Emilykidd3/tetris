@@ -161,4 +161,20 @@ document.addEventListener('DOMContentLoaded', () => {
         current = theTetrominoes[random][currentRotation]
         draw()
     }
+
+    const displaySquares = document.querySelectorAll('.mini-grid div')
+    const displayWidth = 4
+    let displayIndex = 0
+
+    // tets without rotations
+    const upNextTetrominoes = [
+        [1, displayWidth+1, displayWidth*2+1,2],
+        [0, displayWidth, displayWidth+1, displayWidth*2+1],
+        [1, displayWidth, displayWidth+1, displayWidth+2],
+        [0, 1, displayWidth, displayWidth+1],
+        [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1]
+    ]
+
+    // display shape in mini grid
+    function displayShape() {}
 })
