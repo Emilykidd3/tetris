@@ -1,11 +1,22 @@
+body {
+  background-color: #b4d2ba;
+}
+
 .container {
   display: flex;
+  justify-content: center;
+}
+
+#trackers {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 400px 50px 400px;
 }
 
 .grid {
   width: 200px;
   height: 400px;
-  background-color: yellow;
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
 }
@@ -25,7 +36,7 @@
   height: 80px;
   display: flex;
   flex-wrap: wrap;
-  background-color: yellow;
+  background-color: white;
 }
 
 .mini-grid div {
