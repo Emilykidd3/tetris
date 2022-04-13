@@ -58,8 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let random = Math.floor(Math.random()*theTetrominoes.length)
     let current = theTetrominoes[random][currentRotation];
-    console.log(current);
-
 
     function makeGameBoard() {
         var squares = []
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     var squares = makeGameBoard();
-    var miniSquare = makeMiniGrid();
+    var miniGridSquares = makeMiniGrid();
     
     function draw() {
         current.forEach(index => {
@@ -103,8 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentPosition + index].style.backgroundColor = ''
         })
     }
-
-    // timerId = setInterval(moveDown, 500);
 
     function control(e){
         if(e.keyCode === 37) {
@@ -150,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         + index].classList.contains('taken'))){
             currentPosition+=1
         }
-
         draw()
     }
 
@@ -168,6 +163,29 @@ document.addEventListener('DOMContentLoaded', () => {
              draw()
     }
 
+    function isAtRight() {
+        return current.some(index => (currentPosition + index + 1) % width === 0)
+    }
+
+    function isAtLeft() {
+        return current.some(index => (currentPosition + index) % width === 0)
+    }
+
+    function checkRotatedPostition(P){
+        P = P || currentPosition
+        if((P+1) % width < 4) {
+            if (isAtRight()) {
+                currentPosition+=1
+                checkRotatedPostition(P)
+            }
+        } else if (P % width > 5) {
+            if (isAtLeft()) {
+                currentPosition-=1
+                checkRotatedPostition(P)
+            }
+        }
+    }
+
     function rotate() {
         undraw()
         currentRotation++
@@ -175,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentRotation = 0;
         }
         current = theTetrominoes[random][currentRotation]
+        checkRotatedPostition()
         draw()
     }
 
