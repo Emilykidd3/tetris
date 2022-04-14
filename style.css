@@ -2,6 +2,11 @@ body {
   background-color: #b4d2ba;
 }
 
+#title {
+  text-align: center;
+  font-size: xx-large;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -10,7 +15,7 @@ body {
 #trackers {
   display: flex;
   justify-content: space-around;
-  padding: 0 400px 50px 400px;
+  padding: 0 25% 50px 25%;
 }
 
 .grid {

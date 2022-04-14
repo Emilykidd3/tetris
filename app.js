@@ -113,7 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
             moveDown()
         }
     }
-    document.addEventListener('keyup', control)
+    // document.addEventListener('keyup', control)
+    document.addEventListener('keydown', control)
 
     function moveDown(){
         undraw();
@@ -130,10 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
             nextRandom = Math.floor(Math.random() * theTetrominoes.length)
             current = theTetrominoes[random][currentRotation]
             currentPosition = 4
-            draw();
             displayShape();
             addScore();
             gameOver();
+            draw();
         }
     }
 
