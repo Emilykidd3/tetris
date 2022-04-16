@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId
     let score = 0;
     const colors = [
-        'orange',
-        'red',
-        'purple',
-        'green',
-        'blue'
+        '#003844',
+        '#006C67',
+        '#95D7AE',
+        '#EF6461',
+        '#E3D3E4'
     ]
 
     // the shapes
